@@ -1,11 +1,6 @@
 # require modules here
 require 'yaml'
 
-# returns..
-# {
-#   :get_emoticon => { 'O:)'     => '☜(⌒▽⌒)☞' } 
-#   :get_meaning  => { '☜(⌒▽⌒)☞' => 'angel'   }
-# }
 def load_library(path)
   library = { get_emoticon: {}, get_meaning: {}}
   YAML.load_file(path).each_with_object(library) do |(key, val), hash|
@@ -25,8 +20,12 @@ def get_japanese_emoticon(path, emoticon)
   # remove nil values from loops that didnt map anything (i.e. failed if check)
   end.compact
 
-  # same as pair[0] -- the result of map is an array, even though there's only one value
-  pair.first
+  if pair
+    # same as pair[0] -- the result of map is an array, even though there's only one value
+    pair.first
+  else
+    "Sorry, that emoticon was not found"
+  end
 end
 
 # returns "angel" for emoticon = "☜(⌒▽⌒)☞"
@@ -39,6 +38,10 @@ def get_english_meaning(path, emoticon)
   # remove nil values from loops that didnt map anything (i.e. failed if check)
   end.compact
 
-  # same as pair[0] -- the result of map is an array, even though there's only one value
-  pair.first
+  if pair
+    # same as pair[0] -- the result of map is an array, even though there's only one value
+    pair.first
+  else
+    "Sorry, that emoticon was not found"
+  end
 end
