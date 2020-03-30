@@ -16,9 +16,8 @@ def load_library(path)
     hash[key => val[0]] = val[1]
   end
 emoticon_pairs = emoticons.each_with_object({}) do |(phrase, symbols), emotes|
-    symbols.each_with_index do |english, index|
-      if index == 0 
-        emotes[english]=phrase
+    symbols.each_with_index do |item, index|
+      emotes[0]= item[1]
       end
     end
   end
