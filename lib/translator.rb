@@ -15,6 +15,8 @@ def load_library(path)
   end
 emoticon_pairs = emoticons.each_with_object({}) do |(phrase, symbols), emotes|
     symbols.map do |english, japanese|
+      puts emotes[english]
+      puts emotes[japanese]
       emotes[english] = emotes[japanese]
       end
       puts emotes
