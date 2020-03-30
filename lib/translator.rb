@@ -1,41 +1,30 @@
-# returns..
-# {
-#   :get_emoticon => { 'O:)'     => '☜(⌒▽⌒)☞' } 
-#   :get_meaning  => { '☜(⌒▽⌒)☞' => 'angel'   }
-# }
+# require modules here
+require 'yaml'
+
 def load_library(path)
-  library = { get_emoticon: {}, get_meaning: {}}
-  YAML.load_file(path).each_with_object(library) do |(key, val), hash|
-    hash[:get_emoticon][val[0]] = val[1]
-    hash[:get_meaning][val[1]] = key
+  emoticons = YAML.load(File.read(path))
+  meaning = {}
+  emoticon = {}
+  meaning_emoticon_pairs = emoticons.each_with_object({}) do |(phrase, symbols), meaning|
+    symbols.each_with_index do |japanese, index|
+      index == 1 ? meaning[japanese]=phrase : nil
+    end
   end
+  new_emoticons = emoticons.each_with_object({}) do |(key, val), hash|
+    hash[key => val[0]] = val[1]
+  end
+emoticon_pairs = emoticons.each_with_object({}) do |(phrase, symbols), pairs|
+    symbols.each do |emote|
+      pairs[] 
+    end
+
+final_hash = {:get_meaning => meaning_emoticon_pairs, :get_emoticon =>emoticon_pairs}
 end
 
-# returns "☜(⌒▽⌒)☞" for emoticon = "O:)"
-def get_japanese_emoticon(path, emoticon)
-  pair = load_library(path)[:get_emoticon].map do |english, japanese|
-  # pair = load_library(path).map do |word, (english, japanese)|
-    if english == emoticon
-      # return to be "mapped" to pair
-      japanese
-    end
-  # remove nil values from loops that didnt map anything (i.e. failed if check)
-  end.compact
-
-  # same as pair[0] -- the result of map is an array, even though there's only one value
-  pair.first
+def get_japanese_emoticon
+  # code goes here
 end
 
-# returns "angel" for emoticon = "☜(⌒▽⌒)☞"
-def get_english_meaning(path, emoticon)
-  pair = load_library(path)[:get_meaning].map do |japanese_emoticon, meaning|
-    if japanese_emoticon == emoticon
-      # return to be "mapped" to pair
-      meaning
-    end
-  # remove nil values from loops that didnt map anything (i.e. failed if check)
-  end.compact
-
-  # same as pair[0] -- the result of map is an array, even though there's only one value
-  pair.first
+def get_english_meaning
+  # code goes here
 end
