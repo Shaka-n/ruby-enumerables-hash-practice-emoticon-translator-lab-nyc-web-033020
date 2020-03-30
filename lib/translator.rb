@@ -17,6 +17,7 @@ emoticon_pairs = emoticons.each_with_object({}) do |(phrase, symbols), emotes|
     symbols.map do |english, japanese|
       emotes[english] = emotes[japanese]
       end
+      puts emotes
     end
 
 final_hash = {:get_meaning => meaning_emoticon_pairs, :get_emoticon =>emoticon_pairs}
