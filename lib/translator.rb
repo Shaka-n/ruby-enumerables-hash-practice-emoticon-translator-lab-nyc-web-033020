@@ -20,7 +20,6 @@ emoticon_pairs = emoticons.each_with_object({}) do |(phrase, symbols), emotes|
       emotes[0]= item[1]
       end
     end
-  end
 
 final_hash = {:get_meaning => meaning_emoticon_pairs, :get_emoticon =>emoticon_pairs}
 end
