@@ -13,12 +13,10 @@ def load_library(path)
   new_emoticons = emoticons.each_with_object({}) do |(key, val), hash|
     hash[key => val[0]] = val[1]
   end
-emoticon_pairs = emoticons.each_with_object({}) do |(phrase, symbols), emotes|
-    symbols.map do |english, japanese|
-      puts emotes[english]
-      puts emotes[japanese]
-      emotes[english] = emotes[japanese]
-      end
+emoticon_pairs = emoticons.each_with_object({}) do |(phrase, symbols), pairs|
+    symbols.map do |emote|
+      unless pairs[emote]
+      pairs[emote] = emote
       puts emotes
     end
 
