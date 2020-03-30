@@ -14,10 +14,8 @@ def load_library(path)
     hash[key => val[0]] = val[1]
   end
 emoticon_pairs = emoticons.each_with_object({}) do |(phrase, symbols), pairs|
-    symbols.map do |emote|
-      unless pairs[emote]
-      pairs[emote] = emote
-      puts emotes
+    symbols.each do |emote|
+      pairs[] 
     end
 
 final_hash = {:get_meaning => meaning_emoticon_pairs, :get_emoticon =>emoticon_pairs}
