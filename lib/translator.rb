@@ -18,7 +18,7 @@ def load_library(path)
 emoticon_pairs = emoticons.each_with_object({}) do |(phrase, symbols), emotes|
     symbols.each_with_index do |english, index|
       if index == 0 
-        meaning[english]=phrase
+        emotes[english]=phrase
       end
     end
   end
