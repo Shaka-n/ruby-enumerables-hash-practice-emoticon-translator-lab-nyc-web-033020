@@ -3,13 +3,11 @@ require 'yaml'
 
 def load_library(path)
   emoticons = YAML.load(File.read(path))
-  pp emoticons
   meaning = {}
   emoticon = {}
   meaning_emoticon_pairs = emoticons.each_with_object({}) do |(phrase, symbols), meaning|
     symbols.each_with_index do |japanese, index|
       index == 1 ? meaning[japanese]=phrase : nil
-      puts meaning
     end
   end
   new_emoticons = emoticons.each_with_object({}) do |(key, val), hash|
