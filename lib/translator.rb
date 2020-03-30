@@ -15,6 +15,9 @@ def load_library(path)
   end
 emoticon_pairs = emoticons.each_with_object({}) do |(phrase, symbols), emotes|
     symbols.each_with_index do |item, index|
+      puts item
+      puts item[0]
+      puts item[1]
       emotes[item] = item[1]
       end
     end
