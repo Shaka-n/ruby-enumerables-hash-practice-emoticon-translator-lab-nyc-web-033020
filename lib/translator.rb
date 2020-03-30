@@ -20,12 +20,7 @@ def get_japanese_emoticon(path, emoticon)
   # remove nil values from loops that didnt map anything (i.e. failed if check)
   end.compact
 
-  if pair
-    # same as pair[0] -- the result of map is an array, even though there's only one value
-    pair.first
-  else
-    "Sorry, that emoticon was not found"
-  end
+  pair.first ? pair.first : "Sorry, that emoticon was not found"
 end
 
 # returns "angel" for emoticon = "☜(⌒▽⌒)☞"
@@ -38,10 +33,5 @@ def get_english_meaning(path, emoticon)
   # remove nil values from loops that didnt map anything (i.e. failed if check)
   end.compact
 
-  if pair
-    # same as pair[0] -- the result of map is an array, even though there's only one value
-    pair.first
-  else
-    "Sorry, that emoticon was not found"
-  end
+  pair.first ? pair.first : "Sorry, that emoticon was not found"
 end
